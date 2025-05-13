@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useRouter } from 'next/navigation';
 
@@ -132,7 +132,7 @@ function Registerpage() {
   return (
     <div className="text-sm">
       <Navbar />
-      <div className="bg-gradient-to-b from-[#3f064f] to-[#220925] flex items-start justify-center px-4 py-[75px]"> {/* ลด padding เพื่อย้ายกล่องให้สูงขึ้น */}
+      <div className="bg-gradient-to-b from-[#3f064f] to-[#220925] flex items-start justify-center px-4 py-[95px]"> {/* ลด padding เพื่อย้ายกล่องให้สูงขึ้น */}
         <div className="bg-white relative z-10 rounded-xl shadow-lg flex flex-col md:flex-row w-full max-w-[650px] overflow-hidden">
 
           {/* ฟอร์มล็อกอิน */}
@@ -166,14 +166,10 @@ function Registerpage() {
             <div className="my-3 text-center text-gray-400 text-xs">หรือด้วย</div>
 
             <div className="space-y-2">
-              <button className="w-full flex items-center justify-between px-3 py-2 border border-gray-300 rounded-md text-sm hover:bg-gray-50">
+              <button className="w-full flex justify-between items-center px-3 py-2 border border-gray-300 rounded-md text-sm hover:bg-gray-50" onClick={() =>{signIn("google");}}>
                 <span className="flex items-center">
                   ดำเนินการต่อด้วย Google
                 </span>
-                <span className="text-base">→</span>
-              </button>
-              <button className="w-full flex justify-between items-center px-3 py-2 border border-gray-300 rounded-md text-sm hover:bg-gray-50">
-                <span>ดำเนินการต่อด้วย Email</span>
                 <span className="text-base">→</span>
               </button>
             </div>
