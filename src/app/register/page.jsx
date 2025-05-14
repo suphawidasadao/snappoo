@@ -132,13 +132,12 @@ function Registerpage() {
   return (
     <div className="text-sm">
       <Navbar />
-      <div className="bg-gradient-to-b from-[#3f064f] to-[#220925] flex items-start justify-center px-4 py-[95px]"> {/* ลด padding เพื่อย้ายกล่องให้สูงขึ้น */}
-        <div className="bg-white relative z-10 rounded-xl shadow-lg flex flex-col md:flex-row w-full max-w-[650px] overflow-hidden">
+      <div className="bg-gradient-to-b from-[#3f064f] to-[#220925] flex items-start justify-center px-4 py-48"> {/* ลด padding เพื่อย้ายกล่องให้สูงขึ้น */}
+        <div className="bg-white relative z-10 rounded-xl shadow-lg flex flex-col md:flex-row w-full max-w-[750px] overflow-hidden">
 
           {/* ฟอร์มล็อกอิน */}
-          <div className="w-full md:w-2/3 p-6">
-            <h2 className="text-xl font-semibold mb-1">ยินดีต้อนรับเข้าสู่ Snappoo</h2>
-            <p className="text-xs text-gray-500 mb-4">สร้างบัญชีฟรีใน 2 ขั้นตอน</p>
+          <div className="w-full md:w-2/3 p-10">
+            <h2 className="text-xl font-semibold mb-6">ยินดีต้อนรับเข้าสู่ Snappoo</h2>
 
             <form className="space-y-3" onSubmit={handleSubmit}>
 
@@ -185,7 +184,7 @@ function Registerpage() {
 
           {/* รูปภาพด้านขวา */}
           <div className="w-full md:w-1/3">
-            <img src="https://m.media-amazon.com/images/I/81RMzd0XilL._AC_UF350,350_QL80_.jpg" alt="Image" className="w-full h-full object-cover rounded-md" />
+            <img src="https://promotions.co.th/wp-content/uploads/2020/07/kids-using-tablet-during-lesson_23-2147848805.jpg" alt="Image" className="w-full h-full object-cover rounded-md" />
           </div>
         </div>
       </div>

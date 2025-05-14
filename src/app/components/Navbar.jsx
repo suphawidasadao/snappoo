@@ -20,7 +20,7 @@ const Navbar = () => {
                         priority
                     />
                 </div>
-                <ul className="flex gap-6">
+                <ul className="flex gap-6 text-base">
                     {!session ? (
                         <>
                             <li>
