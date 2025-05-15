@@ -47,6 +47,9 @@ const Navbar = () => {
                                 </button>
 
                             </li>
+                            <li>
+                                <Link href="/home">home</Link>
+                            </li>
                         </>
                     )}
                 </ul>
