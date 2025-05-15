@@ -15,7 +15,7 @@ function JoinRoom() {
         <Navbar session={session} />
       </div>
 
-      <div className="flex items-start justify-center bg-gradient-to-b from-[#3f064f] to-[#220925] px-4 pt-16 pb-10 min-h-screen">
+      <div className="flex items-start justify-center bg-gradient-to-b from-[#3f064f] to-[#220925] px-4 py-38 min-h-screen">
         <div className="text-center w-full max-w-xl">
           <div className="relative w-120 h-60 mx-auto ">
             <Image
