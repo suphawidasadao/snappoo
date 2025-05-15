@@ -36,7 +36,7 @@ const Navbar = () => {
                     ) : (
                         <>
                             <li>
-                                <span className="text-white">Hello, {session.user.email}</span> {/* Optionally show user's name */}
+                                <span className="text-white">{session.user.email.split("@")[0]}</span> {/* Optionally show user's name */}
                             </li>
                             <li>
                                 <button
