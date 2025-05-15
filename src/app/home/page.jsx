@@ -13,10 +13,6 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Dashboard | Quizizz Clone</title>
-      </Head>
-
       <header className="bg-white shadow p-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <div className="relative w-8 h-10">
