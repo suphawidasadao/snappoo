@@ -47,56 +47,12 @@ function Loginpage() {
         }
     }
 
-    useEffect(() => {
-        const numStars = 30;  // จำนวนดาวระยิบ
-    
-        // สร้างดาวระยิบ
-        for (let i = 0; i < numStars; i++) {
-          const star = document.createElement("div");
-          star.className = "star absolute w-[1px] h-[1px] bg-white rounded-full opacity-70 animate-twinkle shadow-[0_0_4px_1px_white]";
-          star.style.top = `${Math.random() * 100}vh`;
-          star.style.left = `${Math.random() * 100}vw`;
-          star.style.animationDuration = `${2 + Math.random() * 3}s`; // ดาวกระพริบมีความเร็วสุ่ม
-          star.style.opacity = `${Math.random() * 0.6 + 0.2}`;
-          document.body.appendChild(star);
-        }
-    
-        // สร้างดาวตก 2 ดวงในทุกๆ 1.5 วินาที
-        const shootingStarInterval = setInterval(() => {
-          // ดาวตกที่ 1
-          const shootingStar1 = document.createElement("div");
-          shootingStar1.className = "shooting-star";
-          shootingStar1.style.top = `${Math.random() * 50}vh`;
-          shootingStar1.style.left = `${Math.random() * 80}vw`;
-          document.body.appendChild(shootingStar1);
-    
-          // ดาวตกที่ 2 (ตำแหน่งและการเคลื่อนที่แตกต่าง)
-          const shootingStar2 = document.createElement("div");
-          shootingStar2.className = "shooting-star";
-          shootingStar2.style.top = `${Math.random() * 50}vh`;
-          shootingStar2.style.left = `${Math.random() * 80 + 10}vw`;  // เลื่อนตำแหน่งเล็กน้อย
-          document.body.appendChild(shootingStar2);
-    
-          // ลบดาวตกหลังจาก 1.5 วินาที
-          setTimeout(() => {
-            shootingStar1.remove();
-            shootingStar2.remove();
-          }, 3500)
-    
-        }, 3500);//ทุก ๆ 1.5 วินาที
-    
-        // cleanup
-        return () => {
-          document.querySelectorAll(".star").forEach(star => star.remove());
-          clearInterval(shootingStarInterval);
-        };
-      }, []);
-
     return (
+        <div className="overflow-hidden h-screen">
         <div className="text-sm">
             <Navbar />
 
-            <div className="bg-[#2e003e] flex items-start justify-center px-4 py-48">
+            <div className="bg-[#2e003e] flex items-start justify-center px-4 py-48 overflow-hidden">
                 <div className="bg-white relative z-10 rounded-xl shadow-lg flex flex-col md:flex-row w-full max-w-[750px] overflow-hidden">
 
                     {/* ฟอร์มเข้าสู่ระบบ */}
@@ -150,6 +106,7 @@ function Loginpage() {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     );
 }

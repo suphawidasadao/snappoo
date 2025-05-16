@@ -10,7 +10,7 @@ function JoinRoom() {
   console.log(session);
 
   return (
-    <>
+    <div className="overflow-hidden h-screen">
       <div className="text-sm">
         <Navbar session={session} />
       </div>
@@ -46,7 +46,7 @@ function JoinRoom() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
