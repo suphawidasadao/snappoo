@@ -20,7 +20,7 @@ const Navbar = () => {
                         priority
                     />
                 </div>
-                <ul className="flex gap-6">
+                <ul className="flex gap-6 text-base">
                     {!session ? (
                         <>
                             <li>
@@ -36,7 +36,7 @@ const Navbar = () => {
                     ) : (
                         <>
                             <li>
-                                <span className="text-white">Hello, {session.user.email}</span> {/* Optionally show user's name */}
+                                <span className="text-white">{session.user.email.split("@")[0]}</span> {/* Optionally show user's name */}
                             </li>
                             <li>
                                 <button
@@ -46,6 +46,9 @@ const Navbar = () => {
                                     ออกจากระบบ
                                 </button>
 
+                            </li>
+                            <li>
+                                <Link href="/home">home</Link>
                             </li>
                         </>
                     )}

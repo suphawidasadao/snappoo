@@ -48,14 +48,15 @@ function Loginpage() {
     }
 
     return (
+        <div className="overflow-hidden h-screen">
         <div className="text-sm">
             <Navbar />
 
-            <div className="bg-[#2e003e] flex items-start justify-center px-4 py-22">
-                <div className="bg-white relative z-10 rounded-xl shadow-lg flex flex-col md:flex-row w-full max-w-[650px] overflow-hidden">
+            <div className="bg-[#2e003e] flex items-start justify-center px-4 py-48 overflow-hidden">
+                <div className="bg-white relative z-10 rounded-xl shadow-lg flex flex-col md:flex-row w-full max-w-[750px] overflow-hidden">
 
                     {/* ฟอร์มเข้าสู่ระบบ */}
-                    <div className="w-full md:w-2/3 p-6">
+                    <div className="w-full md:w-2/3 p-10">
                         <h2 className="text-xl font-semibold mb-6">เข้าสู่ระบบ Snappoo</h2>
 
                         <form className="space-y-3" onSubmit={handleSubmit}>
@@ -86,14 +87,10 @@ function Loginpage() {
                         <div className="my-3 text-center text-gray-400 text-xs">หรือด้วย</div>
 
                         <div className="space-y-2">
-                            <button className="w-full flex items-center justify-between px-3 py-2 border border-gray-300 rounded-md text-sm hover:bg-gray-50">
+                            <button className="w-full flex items-center justify-between px-3 py-2 border border-gray-300 rounded-md text-sm hover:bg-gray-50" onClick={() =>{signIn("google");}}>
                                 <span className="flex items-center">
                                     ดำเนินการต่อด้วย Google
                                 </span>
-                                <span className="text-base">→</span>
-                            </button>
-                            <button className="w-full flex justify-between items-center px-3 py-2 border border-gray-300 rounded-md text-sm hover:bg-gray-50">
-                                <span>ดำเนินการต่อด้วย Email</span>
                                 <span className="text-base">→</span>
                             </button>
                         </div>
@@ -105,10 +102,11 @@ function Loginpage() {
 
                     {/* รูปภาพด้านขวา */}
                     <div className="w-full md:w-1/3">
-                        <img src="https://m.media-amazon.com/images/I/81RMzd0XilL._AC_UF350,350_QL80_.jpg" alt="Image" className="w-full h-full object-cover rounded-md" />
+                        <img src="https://promotions.co.th/wp-content/uploads/2020/07/kids-using-tablet-during-lesson_23-2147848805.jpg" alt="Image" className="w-full h-full object-cover rounded-md" />
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     );
 }
