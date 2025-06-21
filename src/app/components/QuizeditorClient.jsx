@@ -38,7 +38,7 @@ export default function QuizEditorClient() {
     return (
         <div style={{ maxWidth: 700, margin: "auto" }}>
             <h1>จัดการ Quiz ชุด {quizId}</h1>
-            <button onClick={() => router.push(`/questioneditor2?quizId=${quizId}`)}>
+            <button onClick={() => router.push(`/questioneditor?quizId=${quizId}`)}>
                 เพิ่มคำถามใหม่
             </button>
             <ul>
