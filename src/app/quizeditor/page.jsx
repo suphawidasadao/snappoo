@@ -1,48 +1,55 @@
 "use client";
- 
+
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
- 
+import { useRouter, useSearchParams } from "next/navigation";
+
 export default function QuizEditor2() {
-  const [questions, setQuestions] = useState([]);
-  const [publishing, setPublishing] = useState(false);
   const router = useRouter();
- 
+  const searchParams = useSearchParams();
+  const quizId = searchParams.get("quizId");
+
+  const [questions, setQuestions] = useState([]);
+  const [saving, setSaving] = useState(false);
+
   useEffect(() => {
-    fetch("/api/questions", { credentials: "include" })
+    if (!quizId) return;
+
+    fetch(`/api/questions?quizId=${quizId}`, { credentials: "include" })
       .then((res) => res.json())
       .then(setQuestions)
       .catch(() => alert("โหลดคำถามล้มเหลว"));
-  }, []);
- 
- 
-  async function handlePublish() {
-    setPublishing(true);
- 
-    const res = await fetch("/api/questions/public", {
+  }, [quizId]);
+
+  async function handleSave() {
+    setSaving(true);
+
+    const res = await fetch("/api/questions/save", {  // เปลี่ยน API ตามที่คุณมี
       method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ quizId }),
     });
- 
-    setPublishing(false);
- 
+
+    setSaving(false);
+
     if (res.ok) {
-      alert("เผยแพร่ Quiz เรียบร้อย");
-      router.push("/"); // เปลี่ยนเป็นหน้าแสดง quiz หรือหน้าอื่นตามต้องการ
+      alert("บันทึก Quiz เรียบร้อย");
+      router.push("/library"); // เปลี่ยนเป็นหน้าไลบรารี
     } else {
-      alert("เผยแพร่ไม่สำเร็จ");
+      alert("บันทึกไม่สำเร็จ");
     }
   }
- 
+
   return (
     <div style={{ maxWidth: 700, margin: "auto" }}>
-      <h1>จัดการ Quiz</h1>
-      <button onClick={() => router.push("/questioneditor2")}>เพิ่มคำถามใหม่</button>
+      <h1>จัดการ Quiz ชุด {quizId}</h1>
+      <button onClick={() => router.push(`/questioneditor2?quizId=${quizId}`)}>
+        เพิ่มคำถามใหม่
+      </button>
       <ul>
         {questions.map((q) => (
           <li key={q._id} style={{ marginBottom: 20 }}>
             <strong>{q.questionText}</strong> ({q.questionType}) - ตัวเลือก {q.choices.length} ข้อ -{" "}
             {q.published ? "เผยแพร่แล้ว" : "ยังไม่เผยแพร่"}
- 
             <ul>
               {q.choices.map((choice, i) => (
                 <li key={i} style={{ color: choice.isCorrect ? "green" : "black" }}>
@@ -53,14 +60,10 @@ export default function QuizEditor2() {
           </li>
         ))}
       </ul>
- 
-      <button
-        onClick={handlePublish}
-        disabled={publishing || questions.length === 0}
-      >
-        {publishing ? "กำลังเผยแพร่..." : "เผยแพร่ Quiz"}
+
+      <button onClick={handleSave} disabled={saving || questions.length === 0}>
+        {saving ? "กำลังบันทึก..." : "บันทึก Quiz"}
       </button>
     </div>
   );
 }
- 

@@ -24,9 +24,9 @@ const questionSchema = new mongoose.Schema(
     },
     timeLimit: { type: Number, default: 30 }, // วินาที
     published: { type: Boolean, default: false },
+    quizId: { type: String, required: true },
   },
   { timestamps: true }
 );
  
 export default mongoose.models.Question || mongoose.model("Question", questionSchema);
- 

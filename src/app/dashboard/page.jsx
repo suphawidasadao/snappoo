@@ -28,9 +28,9 @@ export default function Dashboard() {
       <aside className="w-64 bg-white border-r shadow-sm">
         <div className="p-6 text-purple-700 text-2xl font-bold">Snappoo</div>
         <div className="px-4">
-          <button className="w-full mb-6 bg-purple-300 hover:bg-purple-400 text-white py-2 rounded flex items-center justify-center">
-            <span className="mr-2">➕</span> สร้าง
-          </button>
+          <a href="questioneditor" className="w-full mb-6 bg-purple-300 hover:bg-purple-400 text-white py-2 rounded flex items-center justify-center">
+            <span className="px-2">➕</span> สร้าง
+          </a>
           <nav className="flex flex-col space-y-4 text-gray-700">
             <div className="flex items-center space-x-2 font-semibold text-purple-700">
               <span>🏠</span> <span>สำรวจ</span>

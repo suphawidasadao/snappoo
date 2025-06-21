@@ -3,12 +3,16 @@
 import React, { useState } from "react";
 import { FaRegArrowAltCircleLeft } from "react-icons/fa";
 import { useRouter } from 'next/navigation';
+import { useSearchParams } from "next/navigation";
  
 export default function QuestionEditor() {
   const MAX_CHOICES = 5;
   const router = useRouter();
   const [questionType, setQuestionType] = useState("ปรนัย");
   const [score, setScore] = useState(1);
+
+  const searchParams = useSearchParams();
+  const quizId = searchParams.get("quizId");
  
   const [questionText, setQuestionText] = useState("");
   const [choices, setChoices] = useState([
@@ -66,6 +70,7 @@ export default function QuestionEditor() {
           choices: payloadChoices,
           questionType,
           score,
+          quizId,
         }),
       });
  

@@ -15,10 +15,20 @@ export async function GET(request) {
         { status: 401 }
       );
     }
+
+    const url = new URL(request.url);
+    const quizId = url.searchParams.get("quizId"); // 👈 ดึง quizId จาก URL
+ 
+    if (!quizId) {
+      return new Response(
+        JSON.stringify({ error: "ต้องระบุ quizId" }),
+        { status: 400 }
+      );
+    }
  
     const creator = session.user.email;
  
-    const questions = await Question.find({ creator });
+    const questions = await Question.find({ creator, quizId });
  
     return new Response(JSON.stringify(questions), { status: 200 });
   } catch (error) {
@@ -46,13 +56,15 @@ export async function POST(request) {
       choices,
       questionType = "ปรนัย",
       score = 1,
+      quizId,
     } = await request.json();
  
     if (
       !questionText ||
       !Array.isArray(choices) ||
       choices.length === 0 ||
-      choices.some((choice) => !choice.text)
+      choices.some((choice) => !choice.text) ||
+      !quizId
     ) {
       return new Response(
         JSON.stringify({ error: "ข้อมูลคำถามหรือคำตอบไม่ครบถ้วน" }),
@@ -72,6 +84,7 @@ export async function POST(request) {
       questionType,
       score,
       creator: session.user.email,
+      quizId,
     });
  
     await newQuestion.save();
