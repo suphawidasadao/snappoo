@@ -76,7 +76,7 @@ export default function QuestionEditor() {
       if (!res.ok) alert('Error: ' + data.error);
       else {
         alert('บันทึกคำถามสำเร็จ!');
-        router.push('/quizeditor?quizId=${quizId}');
+        router.push(`/quizeditor/${quizId}`);
       }
     } catch (error) {
       alert('Error: ' + error.message);
